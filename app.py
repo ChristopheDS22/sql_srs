@@ -4,17 +4,17 @@ import duckdb
 
 st.write("Première app")
 
-df = pd.DataFrame({
+data = {
     "a" : [1,2,3],
     "b" : [4,5,6]
-})
+}
+
+df = pd.DataFrame(data)
 
 st.write("df:")
 st.dataframe(df)
 
 code = st.text_area("Ecrivez votre code ici:")
-
-resultat = duckdb.sql(code).df()
-
-st.write(f"votre résultat: {resultat}")
+resultat = duckdb.query(code).df()
+st.write(f"votre résultat: {code}")
 st.dataframe(resultat)
